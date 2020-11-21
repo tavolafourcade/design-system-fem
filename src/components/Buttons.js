@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import {defaultTheme, typeScale} from '../utils';
 
-const primaryColor =  '#DB6809';
+// const primaryColor =  '#DB6809';
 const Button = styled.button`
   padding: 12px 24px;
-  font-size: 1rem;
+  font-size: ${typeScale.paragraph};
   border-radius: 2px;
   min-width: 100px;
   cursor: pointer;
@@ -12,7 +13,7 @@ const Button = styled.button`
 
 
 const PrimaryButton = styled(Button)`
-  background-color: ${primaryColor};
+  background-color: ${defaultTheme.primaryColor};
   border: none;
   color: white;
   
@@ -20,14 +21,14 @@ const PrimaryButton = styled(Button)`
 
 export const SecondaryButton = styled(Button)`
   background: none;
-  border: 2px solid ${primaryColor};
-  color: ${primaryColor};
+  border: 2px solid ${defaultTheme.primaryColor};
+  color: ${defaultTheme.primaryColor};
 `
 
 export const TertiaryButton = styled(Button)`
   background: none;
   border: none;
-  color: ${primaryColor};
+  color: ${defaultTheme.primaryColor};
 `
 
 
