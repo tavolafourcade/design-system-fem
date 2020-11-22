@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 import {defaultTheme, typeScale} from '../utils';
+import { applyStyleModifiers } from 'styled-components-modifiers';
+
+const BUTTON_MODIFIERS = {
+  small: () => `
+    font-size: ${typeScale.helperText};
+    padding: 8px;
+  `,
+  large: () => `
+  font-size: ${typeScale.h5};
+  padding: 16px 24px;
+  `
+};
 
 // const primaryColor =  '#DB6809';
 const Button = styled.button`
@@ -7,7 +19,7 @@ const Button = styled.button`
   font-size: ${typeScale.paragraph};
   border-radius: 2px;
   min-width: 100px;
-  cursor: pointer;
+  cursor: pointer;  
   font-family: 'Roboto Mono', monospace;
   transition: background-color 0.2s linear, color  0.2s linear;
 
@@ -39,7 +51,9 @@ const PrimaryButton = styled(Button)`
     color: ${defaultTheme.textOnDisabled};
     cursor: not-allowed;
   }
-`
+
+  ${applyStyleModifiers(BUTTON_MODIFIERS)}
+`;
 
 export const SecondaryButton = styled(Button)`
   background: none;
@@ -52,7 +66,9 @@ export const SecondaryButton = styled(Button)`
     border-color: ${defaultTheme.disabled};
     cursor: not-allowed;
   }
-`
+
+  ${applyStyleModifiers(BUTTON_MODIFIERS)}
+`;
 
 export const TertiaryButton = styled(Button)`
   background: none;
@@ -64,7 +80,9 @@ export const TertiaryButton = styled(Button)`
     color: ${defaultTheme.disabled};
     cursor: not-allowed;
   }
-`
+
+  ${applyStyleModifiers(BUTTON_MODIFIERS)}
+`;
 
 
 export default PrimaryButton;
