@@ -8,8 +8,21 @@ const BUTTON_MODIFIERS = {
     padding: 8px;
   `,
   large: () => `
-  font-size: ${typeScale.h5};
-  padding: 16px 24px;
+    font-size: ${typeScale.h5};
+    padding: 16px 24px;
+  `,
+  warning: () =>`
+    background-color: ${defaultTheme.status.warningColor};
+    color: ${defaultTheme.textColorInverted};
+
+    &:hover, &:focus{
+      background-color: ${defaultTheme.status.warningColorHover};
+      outline: 3px solid ${defaultTheme.status.warningColorHover};
+    }
+
+    &:active{
+      background-color: ${defaultTheme.status.warningColorActive};
+    }
   `
 };
 
