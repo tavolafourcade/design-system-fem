@@ -1,19 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import PrimaryButton, 
-  { SecondaryButton, 
+import { ThemeProvider } from 'styled-components';
+import
+  { PrimaryButton, SecondaryButton, 
     TertiaryButton } from './components/Buttons';
 
-import { GlobalStyle } from './utils';
+import { GlobalStyle, defaultTheme, darkTheme } from './utils';
 
-const App = () => (
-  <div>
-    <PrimaryButton modifiers={['small','error']}>Hello World!</PrimaryButton>
-    <SecondaryButton modifiers={['large','warning', 'secondaryButtonWarning']}>Hello World again!</SecondaryButton>
-    <TertiaryButton modifiers={['success', 'tertiaryButtonSuccess']}>Este es mi botón terciario</TertiaryButton>
-    <GlobalStyle/>
-  </div>
-);
+const App = () => {
+
+  const [useDarkTheme, setUseDarkTheme] = useState(false);
+  return (
+    <ThemeProvider theme={useDarkTheme? darkTheme : defaultTheme}>
+      <button style={{  margin: '0 16px 24px', 
+                        padding: '8px', 
+                        background: 'none'}} onClick={() => setUseDarkTheme(true)}>Dark Theme</button>
+
+      <button style={{  margin: '0 16px 24px', 
+                        padding: '8px', 
+                        background: 'none'}} onClick={() => setUseDarkTheme(false)}>Default Theme</button>
+
+      <div style={{
+        background: useDarkTheme ? defaultTheme.primaryColor : darkTheme.primaryColor, 
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+
+        }}>
+        <PrimaryButton >Hello World!</PrimaryButton> 
+        {/* modifiers={['small','error']} */}
+        <SecondaryButton>Hello World again!</SecondaryButton>
+        {/* modifiers={['large','warning', 'secondaryButtonWarning']} */}
+        <TertiaryButton>Este es mi botón terciario</TertiaryButton>
+        {/* modifiers={['success', 'tertiaryButtonSuccess']} */}
+      </div>
+      
+      <GlobalStyle/>
+    </ThemeProvider>
+    
+  );
+}
 
 
 ReactDOM.render(<App/>, document.querySelector('#root'));
