@@ -9,6 +9,7 @@ import { GlobalStyle, defaultTheme, darkTheme } from './utils';
 const App = () => {
 
   const [useDarkTheme, setUseDarkTheme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <ThemeProvider theme={useDarkTheme? darkTheme : defaultTheme}>
       <button style={{  margin: '0 16px 24px', 
@@ -18,6 +19,10 @@ const App = () => {
       <button style={{  margin: '0 16px 24px', 
                         padding: '8px', 
                         background: 'none'}} onClick={() => setUseDarkTheme(false)}>Default Theme</button>
+      
+      <button style={{  margin: '0 16px 24px', 
+                        padding: '8px', 
+                        background: 'none'}} onClick={() => setShowModal(!showModal)}>Toggle Modal</button>
 
       <div style={{
         background: useDarkTheme ? defaultTheme.primaryColor : darkTheme.primaryColor, 
@@ -34,9 +39,11 @@ const App = () => {
         {/* modifiers={['large','warning', 'secondaryButtonWarning']} */}
         {/* <TertiaryButton>Este es mi botón terciario</TertiaryButton> */}
         {/* modifiers={['success', 'tertiaryButtonSuccess']} */}
+
+        <SignUpModal showModal={showModal} setShowModal={setShowModal}/>
+        <GlobalStyle/>
       </div>
-      <SignUpModal/>
-      <GlobalStyle/>
+      
     </ThemeProvider>
     
   );
